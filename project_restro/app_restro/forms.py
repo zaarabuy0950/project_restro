@@ -11,6 +11,5 @@ class CategoryCreateForm(forms.ModelForm):
 class MenuCreateForm(forms.ModelForm):
     # fields = "__all__"
     class Meta:
-        exclude = ['menu_img']
-        fields = ("menu_title", "category_id", "menu_desc", "menu_ingredient", "menu_price")
+        fields = ("menu_title", "category_id", "menu_desc", "menu_ingredient", "menu_img", "menu_price")
         model = Menu

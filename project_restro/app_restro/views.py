@@ -36,7 +36,7 @@ def menu_add(request):
         # menu_ingredient=menu_ingredient, menu_price=menu_price) data.save()
 
         # method three: form object
-        data = MenuCreateForm(request.POST)
+        data = MenuCreateForm(request.POST, request.FILES)
         if data.is_valid():
             data.save()
 
@@ -54,6 +54,7 @@ def menu_update(request):
         data.menu_ingredient = request.POST.get('menu_ingredient')
         data.menu_price = request.POST.get('menu_price')
         data.category_id = category_id
+        data.menu_img = request.FILES.get('menu_img')
         data.save()
 
         return redirect("menu-list")
