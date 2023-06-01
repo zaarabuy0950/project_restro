@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "dc4aaeb6-abc4-43a9-b2c4-a0f1e36b1d59",
+		"name": "RESTRO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category LIST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/category/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Menu LIST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"menu_title\": \"Api chowimim\",\n    \"category_id\": 7,\n    \"menu_desc\": \"This is APi created data\",\n    \"menu_price\": 456,\n    \"menu_ingredient\": \"Api, post, data\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/menu/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"menu",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Menu UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"menu_title\": \"Api chowimim\",\n    \"category_id\": 7,\n    \"menu_desc\": \"This is APi updated data\",\n    \"menu_price\": 456,\n    \"menu_ingredient\": \"Api, post, data\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/menu/13/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"menu",
+						"13",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Menu DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/menu/14/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"menu",
+						"14",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

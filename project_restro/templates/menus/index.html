@@ -9,34 +9,61 @@ Menu | INDEX
     {% include 'partials/_message.html' %}
     <h1>This is MENU INDEX page.</h1>
     <hr>
-    <a href="{% url 'menu-add' %}" class="btn btn-secondary col-12 mb-3">Add New Menu</a>
+    <a class="btn btn-secondary col-12 mb-3" href="{% url 'menu-add' %}">Add New Menu</a>
     <div class="card p-5">
-        <table class="table table-hover">
-            <thead>
-            <th>S.No</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Desc</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th colspan="3">Action</th>
-            </thead>
-            <tbody>
-            {% for val in data %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ val.menu_title }}</td>
-                <td>{{ val.category_id.category_name }}</td>
-                <td>{{ val.menu_desc }}</td>
-                <td>{{ val.menu_price }}</td>
-                <td><img src="{{ val.menu_img.url }}" alt="" width="60" height="60"></td>
-                <td><a href="{% url 'menu-edit' val.id %}">Edit</a></td>
-                <td><a href="{% url 'menu-show' val.id %}">Show</a></td>
-                <td><a href="{% url 'menu-delete' val.id %}">Delete</a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table table-hover">
+                    <thead>
+                    <th>S.No</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Desc</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th colspan="3">Action</th>
+                    </thead>
+                    <tbody>
+                    {% for val in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ val.menu_title }}</td>
+                        <td>{{ val.category_id.category_name }}</td>
+                        <td>{{ val.menu_desc }}</td>
+                        <td>{{ val.menu_price }}</td>
+                        <td><img alt="" height="60" height="60" src="{{ val.menu_img.url }}" width="60"></td>
+                        <td><a href="{% url 'menu-edit' val.id %}">Edit</a></td>
+                        <td><a href="{% url 'menu-show' val.id %}">Show</a></td>
+                        <td><a href="{% url 'menu-delete' val.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2">
+                <h5>Product Name </h5>
+                <hr>
+                <a class="btn btn-sm btn-info mb-2" href="{% url 'menu-list' %}">Clear</a>
+                {% for val in data %}
+                <form action="{% url 'menu-list' %}" method="post">
+                    {% csrf_token %}
+                    <input name="id" type="hidden" value="{{ val.id }}">
+                    <input class="btn btn-sm btn-secondary mb-2" type="submit" value="{{ val.menu_title }}">
+                </form>
+                {% endfor %}
+                <hr>
+                <h5>Category </h5>
+                <hr>
+                <a class="btn btn-sm btn-info mb-2" href="{% url 'menu-list' %}">Clear</a>
+                {% for val in categories %}
+                <form action="{% url 'menu-list' %}" method="post">
+                    {% csrf_token %}
+                    <input name="category_id" type="hidden" value="{{ val.id }}">
+                    <input class="btn btn-sm btn-secondary mb-2" type="submit" value="{{ val.category_name }}">
+                </form>
+                {% endfor %}
+            </div>
+        </div>
 
     </div>
 </div>
